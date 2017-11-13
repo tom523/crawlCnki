@@ -1,0 +1,127 @@
+<script language=javascript >
+alert('对不起，服务器上不存在此用户！可能已经被剔除或参数错误');
+</script><script language='javascript'>
+try{window.parent.HideWaitDiv();}catch(err){};</script>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>概览页</title>
+    <meta content="no-cache" http-equiv="pragma" />
+    <link rel="stylesheet" type="text/css" href="http://piccache.cnki.net/kdn/kns/css/gb_min/BriefComp.min.css?v=" />
+    <script type="text/javascript" src="http://piccache.cnki.net/kdn/kns/script/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="http://piccache.cnki.net/kdn/kns/script/min/gb.BriefPage.min.js?v=D59787997F3B8FCE" ></script>
+    
+</head>
+<body leftmargin="0" onload="BriefOnload();" topmargin="0" onkeydown="grabEvent(event);">
+    <script type="text/javascript" src="http://piccache.cnki.net/kdn/kns/script/WideScreen.js"></script>
+    <form name="ctl00" method="post" action="brief.aspx?curpage=20&amp;RecordsPerPage=20&amp;QueryID=0&amp;ID=&amp;turnpage=1&amp;tpagemode=L&amp;dbPrefix=SCDB&amp;Fields=&amp;DisplayMode=listmode&amp;PageName=ASP.brief_default_result_aspx" id="ctl00">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwMjEzMjM0NDQPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCAWRkFUnlzL67PJ732+B92mn+7Gnt2TiRI1Jktu/5SQeLy1w=" />
+
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAIdIRdFWpKA4BYUdQL6KgtZbgvJz/EQj5rQumcYDL2xlhbi/alS8mbfX8EEY1efJIm0syhzU+O3mZ5ahqVI454K" />
+        <input type="hidden" id="SqlValue" name="SqlValue" value="" />
+        <input type="hidden" id="txtValue" value="" />
+        <input type="hidden" id="LoginState" value="-1" />
+        <input type="hidden" id="userid" value="WEEvREcwSlJHSldRa1FhcEE0NXh1K2ZFbi9SSXpWM2ZRT2VMZkNBaUxPZz0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4ggI8Fm4gTkoUKaID8j8gFw!!" />
+        <input type="hidden" id="resultcount" name="resultcount" value="" />
+        <input type="hidden" id="crrsUrl" name="crrsUrl" value="http://kns.cnki.net/CRRS/" />
+        <input type="hidden" id="krsUrl" name="krsUrl" value="http://kns.cnki.net/KRS" />
+        <input id="crrsPath" type="hidden" name="crrsPath" value='http://kns.cnki.net/CRRS/' />
+        <input id="bathPath" type="hidden" name="bathPath" value='/kns' />
+        <input id="dbCode" type="hidden" name="dbCode" value='SCDB' />
+        <input id="deliveryPath" type="hidden" name="deliveryPath" value='' />
+        <input id="mycnkiUrl" type="hidden" name="mycnkiUrl" value='http://kns.cnki.net/KMycnki/Mycnki/index/' />
+        <input id="kredisServerPath" type="hidden" name="kredisServerPath" value='http://kns.cnki.net' />
+        <input id="heatjson" type="hidden" name="heatjson" value='' />
+             <input id="fengmianPath" type="hidden" name="heatjson" value='http://c61.cnki.net' />
+         <input id="crfdpicPath" type="hidden" name="heatjson" value='http://gongjushu.cnki.net/CRFDPIC/' />
+        <script type="text/javascript">
+            function ShowGroup(p1, p2, p3) {
+                return parent.ShowGroup(p1, p2, p3);
+            }
+            
+    
+            $(document).ready(function () {
+              
+                qkInfoCall();
+                setAuShow();
+                //GetHeat();
+                window.parent.HideWaitDiv();
+                SetFrameHeight();
+            });
+
+        </script>
+        
+        <input name="tpagemode" type="hidden" id="tpagemode" />
+    </form>
+    <script type="text/javascript">
+    
+        ChangeDownloadImg();
+        RevertUserSelect();
+        briefTableListJSEvent();
+        BindOnlick_ShowWait();
+        BindTurnPage_TitleTip();
+        parent.$("#zyzklist").hide();
+        //外文推荐
+        recWWJDAddToTable();
+        var analysisURL = "http://kns.cnki.net/KVisual/ArticleAnalysis/index";
+        modifySql();
+        function modifySql() {
+            var param = "";
+            if (param == null || param == "") {
+                var obj = parent.document.getElementById("sql");
+                if (obj) {
+                    obj.value = "%";
+            }
+        }
+    }
+    //绑定分析
+    $("#analysisBox").hoverDelay({
+        hoverDuring: 200,
+        outDuring: 0,
+        hoverEvent: function () {
+            var $this = $(this);
+            //显示数字
+            var fileNameS = new FileNameS();
+            var pcnt = fileNameS.Count();
+            var rcnt = 643822;
+            var ptext = pcnt > -10 ? "<span>(" + pcnt + ")</span>" : "";//始终为真
+            var rtext = rcnt > -10 ? "<span>(" + rcnt + ")</span>" : "";
+            $this.find("a").eq(0).html("已选文献分析" + ptext);
+            //$this.find("a").eq(1).html("检索结果");
+            $this.find(".imiSelDp").show();
+        },
+        outEvent: function () {
+            $(this).find(".imiSelDp").hide();
+        }
+    });
+
+
+    //隐藏更多弹出层
+    window.document.onclick = parent.OnclickForHideMoredo;
+    </script>
+    <style type="text/css">
+        .flyingAdd
+        {
+            left: -100px;
+            top: 0px;
+            position: absolute;
+            width: 50px;
+            text-align: center;
+            height: 50px;
+            font-size: 50px;
+            color: #999;
+            z-index: 50000;
+        }
+    </style>
+    <div style="left: -1000px; top: -100px; opacity: 1; font-size: 50px;" class="flyingAdd">
+        <img src="../images/gb/checkboxbook.png" alt="" />
+    </div>
+    <script type="text/javascript">
+        LoadScript('http://kns.cnki.net/KRS/scripts/Recommend.js');
+    </script>
+
+</body>
+</html>
